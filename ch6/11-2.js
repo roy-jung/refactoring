@@ -1,4 +1,4 @@
-import fs from 'fs'
+import { readJSON } from '../fileController.js'
 
 console.log(process.argv)
 class Order {
@@ -13,7 +13,7 @@ const main = () => {
     const argv = process.argv
     if (argv.length < 3) throw new Error('파일명을 입력하세요')
     const filename = argv[argv.length - 1]
-    const input = JSON.parse(fs.readFileSync(filename))
+    const input = readJSON(filename)
     const orders = input.map(item => new Order(item))
 
     if (argv.includes('-r')) {

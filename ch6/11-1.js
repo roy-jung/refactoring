@@ -1,7 +1,6 @@
-import { readFileSync } from 'fs'
-import { resolve } from 'path'
+import { readJSON } from '../fileController.js'
 
-const products = JSON.parse(readFileSync(resolve(resolve(), 'ch6/11-products.json')))
+const products = readJSON('ch6/11-products.json')
 const shippingMethod = {
   discountFee: 0.1,
   feePerCase: 0.03,
