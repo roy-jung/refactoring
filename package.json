@@ -5,6 +5,9 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "chai": "^4.3.4",
+    "lodash": "^4.17.21",
+    "mocha": "^9.0.1",
     "nodemon": "^2.0.7"
   },
   "scripts": {
