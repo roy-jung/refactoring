@@ -9,6 +9,6 @@ const spaceship = {
 defaultOwner = { firstName: '레베카', lastName: '파슨스' }
 
 const getDefaultOwner = () => defaultOwner
-const sertDefaultOwner = arg => {
+const setDefaultOwner = arg => {
   defaultOwner = arg
 }
