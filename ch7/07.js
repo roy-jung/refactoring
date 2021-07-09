@@ -7,11 +7,11 @@ class Person {
   get name() {
     return this._name
   }
-  get department() {
-    return this._department
-  }
   set department(arg) {
     this._department = arg
+  }
+  get manager() {
+    return this._department.manager
   }
 }
 
@@ -40,4 +40,4 @@ const feDev = new Department('FEDEV', '로이')
 const jn = new Person('재남')
 jn.department = feDev
 
-console.log(jn.department.manager)
+console.log(jn.manager)

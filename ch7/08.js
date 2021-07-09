@@ -8,8 +8,8 @@ class Person {
   get name() {
     return this._name
   }
-  get manager() {
-    return this._department.manager
+  get department() {
+    return this._department
   }
 }
 
@@ -24,4 +24,4 @@ class Department {
 }
 
 const jn = new Person('재남', new Department('로이'))
-console.log(jn.manager)
+console.log(jn.department.manager)
