@@ -4,6 +4,11 @@
 
 지난 스터디 영상: https://www.youtube.com/playlist?list=PLjQV3hketAJmyZmqXZ1OVEFNctalbf9SX
 
+### before vs. after
+[ch1](https://github.com/roy-jung/refactoring/pull/1)
+[ch4, ch6](https://github.com/roy-jung/refactoring/pull/2)
+[ch7](https://github.com/roy-jung/refactoring/pull/3/commits/9a8d3e3c450a758071294966b40fd6b3b2255103)
+
 ### 스터디 목표
 
 리팩터링 2판 책을 처음부터 끝까지 전부 타이핑하면서 쭈욱 달립니다.
