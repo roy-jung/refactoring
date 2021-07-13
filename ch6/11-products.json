@@ -1,0 +1,37 @@
+[
+  {
+    "name": "apple",
+    "status": "ready",
+    "basePrice": 3000,
+    "discountThreshold": 0.1,
+    "discountRate": 0.1
+  },
+  {
+    "name": "peer",
+    "status": "pending",
+    "basePrice": 4000,
+    "discountThreshold": 0.05,
+    "discountRate": 0.04
+  },
+  {
+    "name": "banana",
+    "status": "ready",
+    "basePrice": 2000,
+    "discountThreshold": 0,
+    "discountRate": 0
+  },
+  {
+    "name": "strawberry",
+    "status": "ready",
+    "basePrice": 3500,
+    "discountThreshold": 0.15,
+    "discountRate": 0.1
+  },
+  {
+    "name": "melon",
+    "status": "shipping",
+    "basePrice": 5000,
+    "discountThreshold": 0.1,
+    "discountRate": 0.09
+  }
+]
