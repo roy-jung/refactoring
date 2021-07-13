@@ -14,10 +14,23 @@ class Person {
     return this._name
   }
   get courses() {
-    return this._courses
+    return [...this._courses]
   }
   set courses(aList) {
-    this._courses = aList
+    this._courses = [...aList]
+  }
+  addCourse(aCourse) {
+    this._courses.push(aCourse)
+  }
+  removeCourse(
+    aCourse,
+    onError = () => {
+      throw new RangeError()
+    },
+  ) {
+    const index = this._courses.indexOf(aCourse)
+    if (index === -1) onError()
+    else this._courses.splice(index, 1)
   }
 }
 
@@ -46,11 +59,10 @@ const client1 = () => {
   const basicCourseNames = readBasicCourseNames(COURSES)
   aPerson.courses = basicCourseNames.map(name => new Course(name, false))
 
-  return aPerson
+  for (const name of readBasicCourseNames(COURSES)) {
+    aPerson.addCourse(new Course(name, false))
+  }
 
-  //
-  // for(const name of readBasicCourseNames(COURSES)) {
-  //   aPerson.courses.push(new Course(name, false))
-  // }
+  return aPerson
 }
 console.log(client1())

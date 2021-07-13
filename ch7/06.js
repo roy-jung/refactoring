@@ -1,6 +1,6 @@
-class TrackingInformation {
-  _shippingCompany
+class Shipment {
   _trackingNumber
+  _shippingCompany
   get shippingCompany() {
     return this._shippingCompany
   }
@@ -13,32 +13,16 @@ class TrackingInformation {
   set trackingNumber(arg) {
     this._trackingNumber = arg
   }
-  get display() {
-    return `${this.shippingCompany}: ${this.trackingNumber}`
-  }
-}
-
-class Shipment {
-  _trackingInformation
-  constructor() {
-    this._trackingInformation = new TrackingInformation()
-  }
   get trackingInfo() {
-    return this._trackingInformation.display
-  }
-  get trackingInformation() {
-    return this._trackingInformation
-  }
-  set trackingInformation(aTrackingInformation) {
-    this._trackingInformation = aTrackingInformation
+    return `${this.shippingCompany}: ${this.trackingNumber}`
   }
 }
 
 const client1 = () => {
   const aShipment = new Shipment()
   const vendor = { name: 'A-SHIP', number: '010-1234-5678' }
-  aShipment.trackingInformation.shippingCompany = vendor.name
-  aShipment.trackingInformation.trackingNumber = vendor.number
+  aShipment._shippingCompany = vendor.name
+  aShipment._trackingNumber = vendor.number
   return aShipment.trackingInfo
 }
 console.log(client1())
