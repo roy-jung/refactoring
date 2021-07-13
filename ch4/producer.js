@@ -1,4 +1,8 @@
 export default class Producer {
+  _province
+  _cost
+  _name
+  _production
   constructor(aProvince, data) {
     this._province = aProvince
     this._cost = data.cost
