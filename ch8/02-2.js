@@ -1,22 +1,29 @@
+import assert from 'assert'
 class Account {
   _number
   _type
-  _interestRate
-  constructor(number, type, interestRate) {
+  constructor(number, type) {
     this._number = number
     this._type = type
+  }
+  get interestRate() {
+    return this._type.interestRate
+  }
+}
+
+class AccountType {
+  _name
+  _interestRate
+  constructor(nameString, interestRate) {
+    this._name = nameString
     this._interestRate = interestRate
   }
   get interestRate() {
     return this._interestRate
   }
 }
-class AccountType {
-  _name
-  constructor(nameString) {
-    this._name = nameString
-  }
-}
-const minus = new AccountType('마통')
-const acc = new Account(100000, minus, 0.39)
+
+const minus = new AccountType('마통', 0.39)
+
+const acc = new Account(100000, minus)
 console.log(acc.interestRate)

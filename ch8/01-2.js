@@ -1,23 +1,34 @@
+class AccountType {
+  isPremium
+  constructor(type) {
+    this.isPremium = type.isPremium
+  }
+  overdraftCharge(daysOverdrawn) {
+    // 마통이자
+    if (this.isPremium) {
+      const baseCharge = 10
+      if (daysOverdrawn <= 7) return baseCharge
+      return baseCharge + (daysOverdrawn - 7) * 0.85
+    }
+    return daysOverdrawn * 1.75
+  }
+}
+
 class Account {
-  daysOverdrawn
-  type = { isPremium: false }
+  daysOverdrawn // 연체일
+  type
   constructor(daysOverdrawn, type) {
     this.daysOverdrawn = daysOverdrawn
-    this.type = type
+    this.type = new AccountType(type)
   }
   get bankCharge() {
+    // 이자
     let result = 4.5
     if (this.daysOverdrawn > 0) result += this.overdraftCharge
     return result
   }
   get overdraftCharge() {
-    // 마통이자
-    if (this.type.isPremium) {
-      const baseCharge = 10
-      if (this.daysOverdrawn <= 7) return baseCharge
-      return baseCharge + (this.daysOverdrawn - 7) * 0.85
-    }
-    return this.daysOverdrawn * 1.75
+    return this.type.overdraftCharge(this.daysOverdrawn)
   }
 }
 
