@@ -1,29 +1,41 @@
 import { readJSON } from '../fileController.js'
 
-console.log(process.argv)
 class Order {
   product = {}
   constructor(product) {
     this.product = product
   }
 }
+class CommandLine {
+  _args
+  constructor(args) {
+    this._args = args
+    if (args.length === 0) throw new Error('파일명을 입력하세요')
+  }
+  get onlyCountReady() {
+    return this._args.includes('-r')
+  }
+  get filename() {
+    return this._args[this._args.length - 1]
+  }
+}
 
-const main = () => {
+const countOrders = commandLine => {
+  const input = readJSON(commandLine.filename)
+  const orders = input.map(item => new Order(item))
+  if (commandLine.onlyCountReady) {
+    const readyOrders = orders.filter(o => o.product.status === 'ready')
+    return readyOrders.length
+  } else {
+    return orders.length
+  }
+}
+
+const main = args => {
   try {
-    const argv = process.argv
-    if (argv.length < 3) throw new Error('파일명을 입력하세요')
-    const filename = argv[argv.length - 1]
-    const input = readJSON(filename)
-    const orders = input.map(item => new Order(item))
-
-    if (argv.includes('-r')) {
-      const readyOrders = orders.filter(o => o.product.status === 'ready')
-      console.log('ready', readyOrders.length)
-    } else {
-      console.log('not ready', orders.length)
-    }
+    console.log(countOrders(new CommandLine(args)))
   } catch (err) {
     console.error(err)
   }
 }
-main()
+main(process.argv.slice(2))

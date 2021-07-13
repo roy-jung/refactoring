@@ -1,3 +1,5 @@
+// p185
+
 const someCustomers = [
   {
     name: 'roy',
@@ -29,10 +31,10 @@ const someCustomers = [
   },
 ]
 
-const inNewEngland = aCustomer => {
-  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(aCustomer.address.state)
+const inNewEngland = state => {
+  return ['MA', 'CT', 'ME', 'VT', 'NH', 'RI'].includes(state)
 }
 
-const newEnglanders = someCustomers.filter(c => inNewEngland(c))
+const newEnglanders = someCustomers.filter(c => inNewEngland(c.address.state))
 
 console.log(newEnglanders)
