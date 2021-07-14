@@ -5,12 +5,12 @@
 지난 스터디 영상: https://www.youtube.com/playlist?list=PLjQV3hketAJmyZmqXZ1OVEFNctalbf9SX
 
 ### before vs. after
-- 21. 6. 29. [Ch01](https://github.com/roy-jung/refactoring/pull/4)
-- 21. 7. 06. [Ch04](https://github.com/roy-jung/refactoring/pull/5)
-- 21. 7. 06. [Ch06](https://github.com/roy-jung/refactoring/pull/6)
-- 21. 7. 08. [Ch07](https://github.com/roy-jung/refactoring/pull/7)
-- 21. 7. 13. [Ch08](https://github.com/roy-jung/refactoring/pull/8)
-- 21. 7. 13. [Ch09](https://github.com/roy-jung/refactoring/pull/9)
+- *21. 06. 29.* [Ch01](https://github.com/roy-jung/refactoring/pull/4)
+- *21. 07. 06.* [Ch04](https://github.com/roy-jung/refactoring/pull/5)
+- *21. 07. 06.* [Ch06](https://github.com/roy-jung/refactoring/pull/6)
+- *21. 07. 08.* [Ch07](https://github.com/roy-jung/refactoring/pull/7)
+- *21. 07. 13.* [Ch08](https://github.com/roy-jung/refactoring/pull/8)
+- *21. 07. 13.* [Ch09](https://github.com/roy-jung/refactoring/pull/9)
 
 ### 스터디 목표
 
