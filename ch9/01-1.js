@@ -5,20 +5,23 @@ const scenario = {
   delay: 40,
 }
 
-const getDistance = (acc, time) => 0.5 * acc * time ** 2
+// 가속도 = 힘 / 무게
 const acceleration = (force, mass) => force / mass
-const primary = (delay, primaryForce, mass, time) => {
+
+// 가속운동시 거리 = 1/2 * a * t^2
+const acceleratedDistance = (acc, time) => (acc * time ** 2) / 2
+
+// 등속운동시 거리 = 속도 * 시간
+const sameVelocityDistance = (velocity, time) => velocity * time
+
+const distanceTravelled = ({ primaryForce, secondaryForce, mass, delay }, time) => {
   const primaryAcceleration = acceleration(primaryForce, mass)
-  return { primaryAcceleration, primaryResult: getDistance(primaryAcceleration, Math.min(time, delay)) }
-}
-const distanceTravelled = ({ delay, primaryForce, secondaryForce, mass }, time) => {
-  var { primaryAcceleration, primaryResult } = primary(delay, primaryForce, mass, time)
-  const secondaryTime = time - delay
-  if (secondaryTime <= 0) return primaryResult
+  const secondaryAcceleration = acceleration(primaryForce + secondaryForce, mass)
+  const secondaryTime = Math.max(time - delay, 0)
   return (
-    primaryResult +
-    primaryAcceleration * delay * secondaryTime +
-    getDistance(acceleration(primaryForce + secondaryForce, mass), secondaryTime)
+    acceleratedDistance(primaryAcceleration, Math.min(time, delay)) +
+    acceleratedDistance(secondaryAcceleration, secondaryTime) +
+    sameVelocityDistance(primaryAcceleration * delay, secondaryTime)
   )
 }
 
