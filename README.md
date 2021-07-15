@@ -11,6 +11,7 @@
 - *21. 07. 08.* [Ch07](https://github.com/roy-jung/refactoring/pull/7)
 - *21. 07. 13.* [Ch08](https://github.com/roy-jung/refactoring/pull/8)
 - *21. 07. 13.* [Ch09](https://github.com/roy-jung/refactoring/pull/9)
+- *21. 07. 15.* [Ch10](https://github.com/roy-jung/refactoring/pull/10)
 
 ### 스터디 목표
 
