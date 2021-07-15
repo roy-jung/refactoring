@@ -1,18 +1,7 @@
-const sendAlert = () => console.warn('악당을 찾았소')
+const sendAlert = p => console.warn('악당을 찾았소', p)
 
 const checkForMiscreants = people => {
-  let found = false
-  for (const p of people) {
-    if (!found) {
-      if (p === '조커') {
-        sendAlert()
-        found = true
-      }
-      if (p === '사루만') {
-        sendAlert()
-        found = true
-      }
-    }
-  }
+  const p = people.find(p => ['조커', '사루만'].includes(p))
+  if (p) sendAlert(p)
 }
-checkForMiscreants(['슈퍼맨', '배트맨', '아이언맨', '사루만', '블랙위도우', '조커', '스파이더맨'])
+checkForMiscreants(['슈퍼맨', '배트맨', '조커', '아이언맨', '사루만', '블랙위도우', '스파이더맨'])

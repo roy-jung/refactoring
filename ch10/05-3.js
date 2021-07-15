@@ -1,4 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep.js'
+
 const RECORDS = [
   {
     name: '애크미 보스턴',
@@ -26,18 +27,30 @@ class Site {
 }
 const acquireSiteData = () => new Site()
 
+const enrichSite = site => {
+  const res = cloneDeep(site)
+  const unknownCustomer = { 
+    isUnknown: true, name: '거주자', billingPlan: registry.billingPlans.basic,
+    paymentHistory: { weeksDelinquentInLastYear: 0 } }
+  if (isUnknown(res.customer)) res.customer = unknownCustomer
+  else res.customer.isUnknown = false
+  return res
+}
+function isUnknown(customer) {
+  if (customer === '미확인 고객') return true
+  return customer.isUnknown
+}
+
 const client1 = () => {
-  const site = acquireSiteData()
-  const customer = site.customer
-  let customerName
-  if (customer === '미확인 고객') customerName = '거주자'
-  else customerName = customer.name
+  const rawSite = acquireSiteData()
+  const site = enrichSite(rawSite)
+  else customerName = site.customer.name
 }
 const client2 = () => {
   const customer = acquireSiteData().customer
-  const plan = customer === '미확인 고객' ? registry.billingPlans.basic : customer.billingPlan
+  const plan =  customer.billingPlan
 }
 const client3 = () => {
   const customer = acquireSiteData().customer
-  const weeksDelinquent = customer === '미확인 고객' ? 0 : customer.paymentHsitry.weeksDelinquentInLastYear
+  const weeksDelinquent = customer.paymentHistory.weeksDelinquentInLastYear
 }

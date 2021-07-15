@@ -1,14 +1,12 @@
 const payAmount = employee => {
-  let result
-  if (employee.isSeperated) result = { amount: 0, reasonCode: 'SEP' }
   // 퇴사
-  else {
-    if (employee.isRetired) result = { amount: 0, reasonCode: 'RET' }
-    // 은퇴
-    else {
-      // 급여계산
-      result = { amount: 100, reasonCode: 'WRK' } // 재직
-    }
-  }
-  return result
+  if (employee.isSeperated) return { amount: 0, reasonCode: 'SEP' }
+
+  // 은퇴
+  if (employee.isRetired) return { amount: 0, reasonCode: 'RET' }
+
+  // 급여계산로직...
+
+  // (생략)
+  return { amount: 100, reasonCode: 'WRK' } // 재직
 }
