@@ -1,6 +1,9 @@
 class Person {
   #name
   #id
+  constructor(id) {
+    this.#id = id
+  }
   get name() {
     return this.#name
   }
@@ -10,10 +13,6 @@ class Person {
   get id() {
     return this.#id
   }
-  set id(id) {
-    this.#id = id
-  }
 }
-const martin = new Person()
+const martin = new Person('1234')
 martin.name = 'Martin'
-martin.id = '1234'

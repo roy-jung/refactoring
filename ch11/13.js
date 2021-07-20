@@ -16,16 +16,9 @@ class ResourcePool {
   available = []
   allocated = new Set()
   get() {
-    let result
-    try {
-      result = this.available.pop()
-      if (!result) throw Error('no available resource')
-      this.allocated.add(result)
-    } catch (e) {
-      result = Resource.create()
-      this.allocated.add(result)
-    }
-    return result
+    const resource = this.available.length === 0 ? Resource.create() : this.available.pop()
+    this.allocated.add(resource)
+    return resource
   }
   add() {
     this.available.push(Resource.create())
@@ -43,5 +36,6 @@ pool.get()
 pool.get()
 pool.get()
 console.log({ available: pool.available, allocated: pool.allocated })
+
 pool.get()
 console.log({ available: pool.available, allocated: pool.allocated })
