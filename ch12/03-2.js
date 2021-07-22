@@ -9,6 +9,9 @@ class Employee {
   assignCar() {
     console.log(this.#name, 'car assigned')
   }
+  finishiConstruction() {
+    if (this.isPrivileged) this.assignCar()
+  }
 }
 
 class Manager extends Employee {
@@ -16,7 +19,7 @@ class Manager extends Employee {
   constructor(name, grade) {
     super(name)
     this.#grade = grade
-    if (this.isPrivileged) this.assignCar()
+    this.finishiConstruction()
   }
   get isPrivileged() {
     return this.#grade > 4
@@ -28,7 +31,7 @@ class Producer extends Employee {
   constructor(name, grade) {
     super(name)
     this.#grade = grade
-    if (this.isPrivileged) this.assignCar()
+    this.finishiConstruction()
   }
   get isPrivileged() {
     return this.#grade > 4

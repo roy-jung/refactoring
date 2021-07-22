@@ -20,11 +20,14 @@ class CatalogItem {
   }
 }
 
-class Scroll extends CatalogItem {
+class Scroll {
   #lastCleaned
-  constructor(id, title, tags, dataLastCleaned) {
-    super(id, title, tags)
+  #catalogItem
+  #id
+  constructor(id, dataLastCleaned, catalogId, catalog) {
+    this.#id = id
     this.#lastCleaned = dataLastCleaned
+    this.#catalogItem = catalog.get(catalogId)
   }
   needsCleaning(targetDate) {
     const threshold = this.hasTag('revered') ? 700 : 1500
@@ -33,45 +36,47 @@ class Scroll extends CatalogItem {
   daysSinceLastCleaning(targetDate) {
     return targetDate.diff(this.#lastCleaned, 'd')
   }
+  get id() {
+    return this.#id
+  }
+  get title() {
+    return this.#catalogItem._title
+  }
+  hasTag(arg) {
+    return this.#catalogItem._tags.includes(arg)
+  }
 }
 
-const data = [
+const catalog = new Map([
+  ['icespear', new CatalogItem('icespear', '아이스스피어', ['magic', 'revered'])],
+  ['fireball', new CatalogItem('fireball', '파이어볼', ['magic'])],
+  ['meteor', new CatalogItem('meteor', '메테오', ['magic', 'revered'])],
+])
+
+const scrollData = [
   {
     id: 'A001',
-    catalogData: {
-      id: 'icespear',
-      title: '아이스스피어',
-      tags: ['magic', 'revered'],
-    },
+    catalogId: 'icespear',
     lastCleaned: '2018-11-01',
   },
   {
     id: 'B002',
-    catalogData: {
-      id: 'fieball',
-      title: '파이어볼',
-      tags: ['magic'],
-    },
+    catalogId: 'fireball',
     lastCleaned: '2018-09-01',
   },
   {
     id: 'C003',
-    catalogData: {
-      id: 'meteor',
-      title: '메테오',
-      tags: ['magic', 'revered'],
-    },
+    catalogId: 'meteor',
     lastCleaned: '2020-02-01',
   },
 ]
-const scrolls = data.map(
-  record => new Scroll(record.id, record.catalogData.title, record.catalogData.tags, dayjs(record.lastCleaned)),
-)
-scrolls.forEach(scroll => {
-  console.log({
-    title: scroll.title,
-    needsCleaning: scroll.needsCleaning(dayjs()),
-    daysSinceLastCleaning: scroll.daysSinceLastCleaning(dayjs()),
-    hasRevered: scroll.hasTag('revered'),
+scrollData
+  .map(record => new Scroll(record.id, dayjs(record.lastCleaned), record.catalogId, catalog))
+  .forEach(scroll => {
+    console.log({
+      title: scroll.title,
+      needsCleaning: scroll.needsCleaning(dayjs()),
+      daysSinceLastCleaning: scroll.daysSinceLastCleaning(dayjs()),
+      hasRevered: scroll.hasTag('revered'),
+    })
   })
-})
