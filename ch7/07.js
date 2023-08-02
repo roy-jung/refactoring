@@ -1,43 +1,43 @@
 class Person {
-  _name
-  _department
+  _name;
+  _department;
   constructor(name) {
-    this._name = name
+    this._name = name;
   }
   get name() {
-    return this._name
-  }
-  get department() {
-    return this._department
+    return this._name;
   }
   set department(arg) {
-    this._department = arg
+    this._department = arg;
+  }
+  get manager() {
+    return this._department.manager;
   }
 }
 
 class Department {
-  _chargeCode
-  _manager
+  _chargeCode;
+  _manager;
   constructor(chargeCode, manager) {
-    this._chargeCode = chargeCode
-    this._manager = manager
+    this._chargeCode = chargeCode;
+    this._manager = manager;
   }
   get chargeCode() {
-    return this._chargeCode
+    return this._chargeCode;
   }
   set chargeCode(arg) {
-    this._chargeCode = arg
+    this._chargeCode = arg;
   }
   get manager() {
-    return this._manager
+    return this._manager;
   }
   set manager(arg) {
-    this._manager = arg
+    this._manager = arg;
   }
 }
 
-const feDev = new Department('FEDEV', '로이')
-const jn = new Person('재남')
-jn.department = feDev
+const feDev = new Department('FEDEV', '로이');
+const jn = new Person('재남');
+jn.department = feDev;
 
-console.log(jn.department.manager)
+console.log(jn.manager);
